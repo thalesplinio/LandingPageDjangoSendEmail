@@ -1,7 +1,9 @@
 .hero{
     text-align: center;
-    padding: 50px 20px;
-    margin-top: 30px;
+    padding: 70px 20px;
+    background-color: #f8f8f8;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
 }
 .hero h1{
     width: 50%;
