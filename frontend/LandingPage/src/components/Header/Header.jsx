@@ -13,7 +13,16 @@ export default function Header(){
         if (emailRef.current){
             navigator.clipboard.writeText(emailRef.current.textContent)
             .then(()=>{
-                toast.success("O E-mail foi copiado...")
+                toast.success("O E-mail foi copiado...", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    })
             })
         }
     }
