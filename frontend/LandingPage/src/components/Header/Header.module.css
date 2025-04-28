@@ -1,0 +1,86 @@
+.topHeader{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 14px;
+    align-items: center;
+}
+.emailSection{
+    background-color: #f0eeee;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 20px;
+    text-align: center;
+    /* justify-content: center; */
+    width: 350px;
+}
+.btnCopy{
+    background: #ffffff;
+    border-radius: 20px;
+    /* width:250px; */
+    height: 30px;
+    /* margin-left: 30px; */
+    width: 80px;
+    border: none;
+    font-weight: bold;
+    cursor: copy;
+}
+.btnCopy:hover{
+    background-color: #ebe8e8;
+}
+.emailExemple{
+    text-align: center;
+    justify-content: center;
+    padding: 7px;
+}
+.socialMidiaLinks a{
+    padding: 7px;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+.menuToggle{
+    display: none;
+}
+.show {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 2rem;
+    background-color: #000;
+    color: #ffffff;
+    width: 200px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    z-index: 99;
+}
+@media (max-width: 690px) {
+    .socialMidiaLinks{
+        display: none;
+    }
+    .show{
+        display: flex;
+        border-radius: 20px 0 0 20px;
+        box-shadow: -2px 2px 8px rgba(0,0,0,0.4);
+    }
+    .socialMidiaLinks a{
+        color: #ffffff;
+        width: 100px;
+    }
+    .socialMidiaLinks a:hover{
+        background: linear-gradient(90deg, #ff7b00, #ff00c8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .menuToggle{
+        display: inline-block;
+        font-size: 34px;
+        margin-top: 8px;
+    }
+}
