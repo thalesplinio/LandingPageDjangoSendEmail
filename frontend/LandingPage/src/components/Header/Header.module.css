@@ -29,7 +29,8 @@
     cursor: copy;
 }
 .btnCopy:hover{
-    background-color: #ebe8e8;
+    background-color: #000000;
+    color: #ffffff;
 }
 .emailExemple{
     text-align: center;

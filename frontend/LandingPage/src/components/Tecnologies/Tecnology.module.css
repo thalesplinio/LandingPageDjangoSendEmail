@@ -1,0 +1,26 @@
+.tecContainer{
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    margin: 50px 0 50px 0;
+    position: relative;
+}
+.slider{
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+}
+.tecContainer span{
+    display: inline-block;
+    font-size: 24px;
+    padding: 20px;
+    font-weight: 200;
+}
+@keyframes scroll {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-30%);
+    }
+}
