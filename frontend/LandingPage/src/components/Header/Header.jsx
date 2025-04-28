@@ -13,7 +13,7 @@ export default function Header(){
         if (emailRef.current){
             navigator.clipboard.writeText(emailRef.current.textContent)
             .then(()=>{
-                toast.success("O E-Mail copiado...")
+                toast.success("O E-mail foi copiado...")
             })
         }
     }
@@ -21,7 +21,7 @@ export default function Header(){
     return (
         <header className={styles.topHeader}>
             <div className={styles.emailSection}>
-                <span ref={emailRef} className={styles.emailExemple}>thalesfeitosa.dev@gmail.com</span>
+                <span ref={emailRef} className={styles.emailExemple}>email_exemple@email.com</span>
                 <button className={styles.btnCopy} onClick={handleCopyEmail}>Copiar</button>
             </div>
 
