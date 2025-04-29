@@ -1,0 +1,52 @@
+.containerContact{
+    margin-top: 50px;
+}
+.containerContact h3{
+    text-align: center;
+    font-size: 36px;
+    margin: 10px 0px 10px 0px;
+}
+.containerContact form{
+    display: block;
+    width: 80%;
+    margin: 30px auto;
+}
+.containerContact form label{
+    display: block;
+    margin: 15px 0px 3px 0px;
+    font-weight: bold;
+}
+.containerContact form input,
+.containerContact form textarea{
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    /* margin-bottom: 20px; */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.containerContact textarea{
+    height: 200px;
+    resize: none;
+}
+.contactCircleHand{
+    width: 120px;
+    height: 120px;
+    background-color: #f8f8f8;
+    margin: 0 auto;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    
+}
+.contactCircleHand img{
+    width: 100px;
+    padding: 15px 10px 15px 10px;
+}
+@media (max-width: 690px) {
+    .containerContact form{
+        width: 90%;
+    }
+}

@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { ToastContainer } from 'react-toastify';
+import Contact from './components/Contact/Contact';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
@@ -15,6 +16,7 @@ function App() {
       <Hero/>
       <Tecnology/>
       <Services/>
+      <Contact/>
     </div>
   )
 }
