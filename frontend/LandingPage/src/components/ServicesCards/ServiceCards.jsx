@@ -1,9 +1,9 @@
 import img from "../../assets/img/computer.png";
 import Button from "../Buttons/Button";
-import styles from "./Services.module.css";
+import styles from "./ServiceCards.module.css";
 
 
-export default function Services(){
+export default function ServiceCards(){
     return(
         <section className={styles.services}>
             <h2>Explore meu portifólio de projetos</h2>

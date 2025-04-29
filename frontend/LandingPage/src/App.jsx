@@ -4,7 +4,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
-import Services from './components/Services/Services';
+import ServiceCards from './components/ServicesCards/ServiceCards';
 import Tecnology from './components/Tecnologies/Tecnology';
 import "./styles/Global.css";
 
@@ -16,7 +16,7 @@ function App() {
       <Header/>
       <Hero/>
       <Tecnology/>
-      <Services/>
+      <ServiceCards/>
       <Contact/>
       <Footer/>
     </div>
