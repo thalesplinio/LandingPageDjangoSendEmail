@@ -2,6 +2,7 @@ import { React } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
+import Services from './components/Services/Services';
 import Tecnology from './components/Tecnologies/Tecnology';
 import "./styles/Global.css";
 
@@ -13,6 +14,7 @@ function App() {
       <Header/>
       <Hero/>
       <Tecnology/>
+      <Services/>
     </div>
   )
 }

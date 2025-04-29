@@ -37,8 +37,8 @@
 }
 @media (max-width: 940px) {
     .hero{
-        border-bottom-left-radius: 90px;
-        border-bottom-right-radius: 90px;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
     }
     .hero h1{
         width: 80%;
