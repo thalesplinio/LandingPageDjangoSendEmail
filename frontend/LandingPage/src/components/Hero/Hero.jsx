@@ -8,7 +8,7 @@ import styles from "./Hero.module.css";
 export default function Hero(){
 
     const handleDownloadCv = () =>{
-        toast.success("O Currículo vai ser baixado...", {
+        toast.success("O Currículo está sendo baixado...", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,

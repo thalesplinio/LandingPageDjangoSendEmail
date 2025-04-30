@@ -11,6 +11,10 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
+<p align="center">
+    <img src="img_site/img_site.png" alt="Tela inicial do site já preenchida" width="700px"/>
+</p>
+
 Status: Em desenvolvimento
 
 ### 💻 Landing Page com React JS, Django e MySql.
