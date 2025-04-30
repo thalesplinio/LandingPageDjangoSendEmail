@@ -6,9 +6,14 @@
     border-bottom-right-radius: 150px;
 }
 .hero h1{
-    width: 50%;
+    width: 45%;
     margin: 0 auto;
     padding: 10px;
+    font-size: 36px;
+
+    background: linear-gradient(90deg, #4f116e, #db563f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .imageContainer{
     position: relative;

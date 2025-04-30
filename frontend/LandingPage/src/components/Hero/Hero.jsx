@@ -26,7 +26,7 @@ export default function Hero(){
                 <img src={image} alt="" className={styles.profilePic} />
                 <span className={styles.sticker}>Thales Plinio 👋</span>
             </div>
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, libero!</h1>
+            <h1>Transformando ideias em realidade digital com o poder da tecnologia em suas mãos.</h1>
             <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button>
         </section>
     )
