@@ -19,7 +19,7 @@ class Technologies(models.Model):
         verbose_name = "Tecnologia"
         verbose_name_plural = "Tecnologias"
 
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -37,14 +37,6 @@ class SiteSetup(models.Model):
     description = models.CharField(max_length=100)
     pdf = models.FileField(upload_to="pdfs/")
     name_footer = models.CharField(max_length=100)
-    social_midia = models.ForeignKey(
-        SocialMidia,
-        on_delete=models.CASCADE,
-    )
-    tecnology = models.ForeignKey(
-        Technologies,
-        on_delete=models.CASCADE
-    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

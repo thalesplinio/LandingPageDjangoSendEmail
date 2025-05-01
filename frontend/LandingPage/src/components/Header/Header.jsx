@@ -30,6 +30,7 @@ export default function Header(){
 
     const [ links, setLinks ] = useState([]);
     const endpointLinks = "http://127.0.0.1:8000/api/social_midia/";
+    
     const [ email, setEmail ] = useState(null);
     const endpointEmail = "http://127.0.0.1:8000/api/site_setup/";
     
