@@ -1,7 +1,7 @@
 <h1 style="text-align:center;">Landing Page com React Js e Django</h1>
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![Maintainer](https://img.shields.io/badge/Licence-MIT-blue)]([https://github.com/thalesplinio/blog_website_django/blob/main/LICENSE](https://github.com/thalesplinio/LandingPageDjangoSendEmail/blob/main/LICENSE))
+[![Maintainer](https://img.shields.io/badge/Licence-MIT-blue)](<[https://github.com/thalesplinio/blog_website_django/blob/main/LICENSE](https://github.com/thalesplinio/LandingPageDjangoSendEmail/blob/main/LICENSE)>)
 
 </br>
 
@@ -17,7 +17,7 @@
 
 Status: Em desenvolvimento
 
-### 💻 Landing Page com React JS, Django e MySql.
+### 💻 Landing Page com React JS, Django e PostgreSQL.
 
 #### <em>Este projeto foi feito para fins de estudos da linguagem python e framework DJango e a biblioteca para interfaces do JavaScript React Js para o front-end</em>
 
@@ -29,4 +29,4 @@ Status: Em desenvolvimento
 - React js com vite
 - React icons material
 - React Toastfy
-- Banco de dados MySQL
+- Banco de dados PostgreSQL

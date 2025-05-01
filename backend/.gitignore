@@ -12,6 +12,7 @@ __localcode
 __pycache__
 db.sqlite3
 bancos.txt
+media
 
 # Backup files #
 *.bak
