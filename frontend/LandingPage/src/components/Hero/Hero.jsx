@@ -1,6 +1,7 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { BsDownload } from "react-icons/bs";
 import { toast } from "react-toastify";
-import image from "../../assets/thales.jpg";
 import Button from "../Buttons/Button";
 import styles from "./Hero.module.css";
 
@@ -20,13 +21,28 @@ export default function Hero(){
             });
     }
 
+    const [hero, setHero] = useState(null);
+
+    useEffect(() =>{
+        axios.get('http://127.0.0.1:8000/api/site_setup/')
+            .then(response => {
+                setHero(response.data[0])
+            })
+            .catch(error =>{
+                console.log("Tivemos um erro ao carregar ----- ", error)
+            });
+    }, []);
+
+    if (!hero) return <p>Carregando...</p>
+    console.log(hero.name)
+
     return (
         <section className={styles.hero}>
             <div className={styles.imageContainer}>
-                <img src={image} alt="" className={styles.profilePic} />
-                <span className={styles.sticker}>Thales Plinio 👋</span>
+                <img src={hero.image} alt="" className={styles.profilePic} />
+                <span className={styles.sticker}>{hero.name}</span>
             </div>
-            <h1>Transformando ideias em realidade digital com o poder da tecnologia em suas mãos.</h1>
+            <h1>{hero.description}</h1>
             <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button>
         </section>
     )
