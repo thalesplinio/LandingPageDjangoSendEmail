@@ -22,19 +22,14 @@ export default function Hero(){
     }
 
     const [hero, setHero] = useState(null);
-
+    const endpoint = "http://127.0.0.1:8000/api/site_setup/";
     useEffect(() =>{
-        axios.get('http://127.0.0.1:8000/api/site_setup/')
-            .then(response => {
-                setHero(response.data[0])
-            })
-            .catch(error =>{
-                console.log("Tivemos um erro ao carregar ----- ", error)
-            });
+        axios.get(endpoint)
+            .then(response => {setHero(response.data[0])})
+            .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, []);
 
     if (!hero) return <p>Carregando...</p>
-    console.log(hero.name)
 
     return (
         <section className={styles.hero}>

@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import SiteSetupListView
+from .views import SiteSetupListView, SocialMidiaListView
 
 
 urlpatterns = [
     path('site_setup/', SiteSetupListView.as_view(), name="site_setup"),
+    path('social_midia/', SocialMidiaListView.as_view(), name="social_midia"),
 ]
