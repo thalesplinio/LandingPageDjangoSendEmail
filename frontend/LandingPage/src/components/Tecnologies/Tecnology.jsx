@@ -13,6 +13,7 @@ export default function Tecnology(){
         "MySQL",
         "PostgreSQL"
     ]
+    
 
     return(
         <section className={styles.tecContainer}>

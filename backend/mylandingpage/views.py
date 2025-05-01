@@ -1,6 +1,7 @@
 from rest_framework import generics
-from .models import SiteSetup, SocialMidia
-from .serializers import SiteSetupSerialize, SocialMidiaSerialize
+from .models import SiteSetup, SocialMidia, Technologies
+from .serializers import (
+    SiteSetupSerialize, SocialMidiaSerialize, TechnologiesSerializer)
 
 
 class SiteSetupListView(generics.ListAPIView):
@@ -11,3 +12,8 @@ class SiteSetupListView(generics.ListAPIView):
 class SocialMidiaListView(generics.ListAPIView):
     queryset = SocialMidia.objects.all()
     serializer_class = SocialMidiaSerialize
+
+
+class TechnologyListView(generics.ListAPIView):
+    queryset = Technologies.objects.all()
+    serializer_class = TechnologiesSerializer
