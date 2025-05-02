@@ -2,7 +2,7 @@ from rest_framework import generics
 from .models import SiteSetup, SocialMidia, Technologies, Projects, Contact
 from .serializers import (
     SiteSetupSerialize, SocialMidiaSerialize, TechnologiesSerializer,
-    ProjectsSerializer, ContactSerializar
+    ProjectsSerializer, ContactSerializer
 )
 
 
@@ -28,4 +28,11 @@ class ProjectListView(generics.ListAPIView):
 
 class ContactCreateView(generics.CreateAPIView):
     queryset = Contact.objects.all()
-    serializer_class = ContactSerializar
+    serializer_class = ContactSerializer
+
+    def perform_create(self, serialize):
+        contact = serialize.save()
+
+        print(contact.name)
+        print(contact.email)
+        print(contact.message)
