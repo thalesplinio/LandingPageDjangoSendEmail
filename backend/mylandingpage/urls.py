@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     SiteSetupListView, SocialMidiaListView, TechnologyListView,
-    ProjectListView,
+    ProjectListView, ContactCreateView
 )
 
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('social_midia/', SocialMidiaListView.as_view(), name="social_midia"),
     path('technology/', TechnologyListView.as_view(), name="technology"),
     path('projects/', ProjectListView.as_view(), name="projects"),
+    path('contact/', ContactCreateView.as_view(), name="create_contact"),
 ]
