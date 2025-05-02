@@ -33,6 +33,17 @@ export default function Contact(){
             })
         }catch(error){
             console.log("Tivemos um erro ao carregar ----- ", error)
+            toast.error(
+                "Não foi possível entrar em contato, tente novamente mais tarde!", {
+                position: "top-center",
+                autoClose: 6000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         }
     }
 
