@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import SiteSetup, SocialMidia, Technologies
+from .models import SiteSetup, SocialMidia, Technologies, Projects
 
 
 class SiteSetupSerialize(serializers.ModelSerializer):
@@ -17,4 +17,10 @@ class SocialMidiaSerialize(serializers.ModelSerializer):
 class TechnologiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Technologies
+        fields = "__all__"
+
+
+class ProjectsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Projects
         fields = "__all__"

@@ -22,6 +22,11 @@ export default function Tecnology(){
                         <span key={item.id}>{item.name}</span>
                     ))
                 }
+                {
+                    tech.map((item) => (
+                        <span key={item.id}>{item.name}</span>
+                    ))
+                }
 
             </div>
         </section>
