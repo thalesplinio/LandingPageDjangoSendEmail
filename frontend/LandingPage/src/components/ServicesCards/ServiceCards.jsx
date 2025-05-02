@@ -16,7 +16,6 @@ export default function ServiceCards(){
 
     if (!project) return <p>Carregando...</p>
 
-
     return(
         <section className={styles.services}>
             <h2>Explore meu portifólio de projetos</h2>
@@ -24,7 +23,7 @@ export default function ServiceCards(){
             <div className={styles.containerService}>
                 {
                     project.map((item) => (
-                        <div className={styles.serviceCards}>
+                        <div key={item.id} className={styles.serviceCards}>
                             <img src={item.icon} alt="" />
                             <h3>{item.title}</h3>
                             <span>{item.subtitle}</span>
