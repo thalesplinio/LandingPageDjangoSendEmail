@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import imgHand from "../../assets/img/handshake.png";
 import Button from "../Buttons/Button";
 import style from "./Contact.module.css";
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Contact(){
 

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsDownload } from "react-icons/bs";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import Button from "../Buttons/Button";
 import styles from "./Hero.module.css";
-
 
 export default function Hero(){
 
@@ -29,7 +30,16 @@ export default function Hero(){
             .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, []);
 
-    if (!hero) return <p>Carregando...</p>
+    if (!hero) return (
+        <section className={styles.hero}>
+            <div className={styles.imageContainer}>
+                <img src={<Skeleton/>} alt="" className={styles.profilePic} />
+                <span className={styles.sticker}>{<Skeleton/>}</span>
+            </div>
+            <h1>{<Skeleton/>}</h1>
+            <Skeleton/>
+        </section>
+    )
 
     return (
         <section className={styles.hero}>

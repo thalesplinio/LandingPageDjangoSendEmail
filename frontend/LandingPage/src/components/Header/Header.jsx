@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import styles from "./Header.module.css";
 
@@ -48,13 +50,38 @@ export default function Header(){
         .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, [])
 
-    if (!links) return <p>Carregando...</p>
-    if (!email) return <p>Carregando...</p>
+    if (!links || !email) return (
+        <header className={styles.topHeader}>
+            <div className={styles.emailSection}>
+                <span ref={emailRef} className={styles.emailExemple}>{<Skeleton/>}</span>
+                <button className={styles.btnCopy} onClick={handleCopyEmail}>{<Skeleton/>}</button>
+            </div>
+
+            <div className={styles.menuToggle} onClick={() => setShowNav(!showNav)}>
+                {showNav ? <IoMdClose /> : <IoMenu /> }
+            </div>            
+
+            <nav className={`${styles.socialMidiaLinks} ${showNav ? styles.show : ''}`}>
+                {
+                    links.map((item) =>(
+                        <a 
+                            key={item.id}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >
+                            {<Skeleton/>}
+                        </a>
+                    ))
+                }
+            </nav>
+        </header>
+    )
 
     return (
         <header className={styles.topHeader}>
             <div className={styles.emailSection}>
-                <span ref={emailRef} className={styles.emailExemple}>{email.email}</span>
+                <span ref={emailRef} className={styles.emailExemple}>{email.email || <Skeleton/>}</span>
                 <button className={styles.btnCopy} onClick={handleCopyEmail}>Copiar</button>
             </div>
 
@@ -65,22 +92,16 @@ export default function Header(){
             <nav className={`${styles.socialMidiaLinks} ${showNav ? styles.show : ''}`}>
                 {
                     links.map((item) =>(
-                        // console.log(item.name)
                         <a 
                             key={item.id}
                             href={item.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             >
-                            {item.name}
+                            {item.name || <Skeleton/>}
                         </a>
                     ))
                 }
-
-
-                {/* <a href="#">Linkedin</a>
-                <a href="#">Github</a>
-                <a href="#">Instagran</a> */}
             </nav>
         </header>
     );
