@@ -4,7 +4,7 @@ import { BsDownload } from "react-icons/bs";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
-import Button from "../Buttons/Button";
+import ALinks from "../ALinks/ALinks";
 import styles from "./Hero.module.css";
 
 export default function Hero(){
@@ -48,7 +48,8 @@ export default function Hero(){
                 <span className={styles.sticker}>{hero.name}</span>
             </div>
             <h1>{hero.description}</h1>
-            <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button>
+            {/* <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button> */}
+            <ALinks name={"Ver CV"} icon={<BsDownload/>} onClink={handleDownloadCv}/>
         </section>
     )
 }
