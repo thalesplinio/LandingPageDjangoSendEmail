@@ -49,7 +49,7 @@ export default function Hero(){
             </div>
             <h1>{hero.description}</h1>
             {/* <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button> */}
-            <ALinks name={"Ver CV"} icon={<BsDownload/>} onClink={handleDownloadCv}/>
+            <ALinks name={"Ver CV"} icon={<BsDownload/>} onClink={handleDownloadCv} ref={hero.pdf}/>
         </section>
     )
 }
