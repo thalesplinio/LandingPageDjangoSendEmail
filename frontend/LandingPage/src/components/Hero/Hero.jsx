@@ -10,7 +10,7 @@ import styles from "./Hero.module.css";
 export default function Hero(){
 
     const handleDownloadCv = () =>{
-        toast.success("O Currículo está sendo baixado...", {
+        toast.success("O Currículo está sendo Visualizado...", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -23,10 +23,14 @@ export default function Hero(){
     }
 
     const [hero, setHero] = useState(null);
-    const endpoint = "http://127.0.0.1:8000/api/site_setup/";
+    
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const apiSiteSetup = "/api/site_setup/";
+    const endpoint = API_BASE + apiSiteSetup;
+
     useEffect(() =>{
         axios.get(endpoint)
-            .then(response => {setHero(response.data[0])})
+            .then(response => setHero(response.data[0]))
             .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, []);
 
@@ -44,12 +48,11 @@ export default function Hero(){
     return (
         <section className={styles.hero}>
             <div className={styles.imageContainer}>
-                <img src={hero.image} alt="" className={styles.profilePic} />
+                <img src={`${API_BASE}${hero.image}`} alt={`imagem de ${hero.name}`} className={styles.profilePic} />
                 <span className={styles.sticker}>{hero.name}</span>
             </div>
             <h1>{hero.description}</h1>
-            {/* <Button onclick={handleDownloadCv} content="Ver Cv" icon={<BsDownload />}></Button> */}
-            <ALinks name={"Ver CV"} icon={<BsDownload/>} onClink={handleDownloadCv} ref={hero.pdf}/>
+            <ALinks name={"Ver CV"} icon={<BsDownload/>} onClink={handleDownloadCv} href={`${API_BASE}${hero.pdf}`}/>
         </section>
     )
 }

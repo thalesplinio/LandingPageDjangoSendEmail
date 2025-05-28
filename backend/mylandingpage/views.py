@@ -5,10 +5,16 @@ from .serializers import (
     ProjectsSerializer, ContactSerializer
 )
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
-class SiteSetupListView(generics.ListAPIView):
-    queryset = SiteSetup.objects.all()
-    serializer_class = SiteSetupSerialize
+
+@api_view(["GET"])
+def get_site_setup(request):
+    site_setup = SiteSetup.objects.all()
+    serialier = SiteSetupSerialize(site_setup, many=True)
+    return Response(serialier.data, status=status.HTTP_200_OK)
 
 
 class SocialMidiaListView(generics.ListAPIView):
