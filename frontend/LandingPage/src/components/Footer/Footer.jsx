@@ -1,25 +1,26 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import styles from "./Footer.module.css";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import styles from "./Footer.module.css";
 
 export default function Footer(){
 
     const [ footer, setFooter ] = useState(null);
-    const endpointFooter = "http://127.0.0.1:8000/api/site_setup/";
-
     const [ links, setLinks ] = useState([]);
-    const endpointLinks = "http://127.0.0.1:8000/api/social_midia/";
+
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const pointFooter = API_BASE + "/api/site_setup/";
+    const pointLinks = API_BASE + "/api/social_midia/";
 
     useEffect(() => {
-        axios.get(endpointFooter)
+        axios.get(pointFooter)
         .then(response => setFooter(response.data[0]))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
     
     useEffect(() => {
-        axios.get(endpointLinks)
+        axios.get(pointLinks)
         .then(response => setLinks(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
