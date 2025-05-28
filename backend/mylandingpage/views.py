@@ -1,13 +1,13 @@
-from rest_framework import generics
-from .models import SiteSetup, SocialMidia, Technologies, Projects, Contact
+# type: ignore
+# flake8: noqa
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import SiteSetup, SocialMidia, Technologies, Projects
 from .serializers import (
     SiteSetupSerialize, SocialMidiaSerialize, TechnologiesSerializer,
     ProjectsSerializer, ContactSerializer
 )
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
 
 
 @api_view(["GET"])
@@ -22,28 +22,31 @@ def get_site_setup(request):
     return Response(serialier.data, status=status.HTTP_200_OK)
 
 
-class SocialMidiaListView(generics.ListAPIView):
-    queryset = SocialMidia.objects.all()
-    serializer_class = SocialMidiaSerialize
+@api_view(["GET"])
+def get_midia_social(request):
+    midia_social = SocialMidia.objects.all()
+    serializer = SocialMidiaSerialize(midia_social, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class TechnologyListView(generics.ListAPIView):
-    queryset = Technologies.objects.all()
-    serializer_class = TechnologiesSerializer
+@api_view(["GET"])
+def get_technologies(request):
+    technology = Technologies.objects.all()
+    serializer = TechnologiesSerializer(technology, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class ProjectListView(generics.ListAPIView):
-    queryset = Projects.objects.all()
-    serializer_class = ProjectsSerializer
+@api_view(["GET"])
+def get_projects(request):
+    projects = Projects.objects.all()
+    serializer = ProjectsSerializer(projects, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class ContactCreateView(generics.CreateAPIView):
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
-
-    def perform_create(self, serialize):
-        contact = serialize.save()
-
-        print(contact.name)
-        print(contact.email)
-        print(contact.message)
+@api_view(["POST"])
+def create_contact(request):
+    serializer = ContactSerializer(data=request.data)
+    if serializer.is_valid():
+        contact = serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
