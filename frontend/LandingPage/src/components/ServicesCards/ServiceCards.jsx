@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Button from "../Buttons/Button";
-import styles from "./ServiceCards.module.css";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import ALinks from "../ALinks/ALinks";
+import styles from "./ServiceCards.module.css";
 
 export default function ServiceCards(){
     const [ project, setProject ] = useState([]);
-    const endpointProject = "http://127.0.0.1:8000/api/projects/";
+
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const pointProject = API_BASE + "/api/projects/";
 
     useEffect(() => {
-        axios.get(endpointProject)
+        axios.get(pointProject)
         .then(response => setProject(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
@@ -27,7 +29,7 @@ export default function ServiceCards(){
                             <h3>{<Skeleton/>}</h3>
                             <span>{<Skeleton/>}</span>
                             <p>{<Skeleton/>}</p>
-                            <Button content={<Skeleton/>}></Button>
+                            <ALinks name={<Skeleton/>}/>
                         </div>
                     ))
                 }
@@ -47,7 +49,10 @@ export default function ServiceCards(){
                             <h3>{item.title}</h3>
                             <span>{item.subtitle}</span>
                             <p>{item.description}</p>
-                            <Button content="Ver mais"></Button>
+                            <ALinks
+                                href={item.link_project}
+                                name={"Ver mais"}
+                            />
                         </div>
                     ))
                 }
