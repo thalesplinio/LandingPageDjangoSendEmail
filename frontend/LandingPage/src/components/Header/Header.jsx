@@ -5,7 +5,9 @@ import { IoMenu } from "react-icons/io5";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
+import { API_ENDPOINTS } from "../../services/api";
 import styles from "./Header.module.css";
+
 
 export default function Header(){
 
@@ -13,10 +15,6 @@ export default function Header(){
     const [ links, setLinks ] = useState([]);
     const [ email, setEmail ] = useState(null);
     const emailRef = useRef(null);
-
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const pointLinks = API_BASE + "/api/social_midia/";
-    const pointEmail = API_BASE + "/api/site_setup/";
     
     const handleCopyEmail = () =>{
         if (emailRef.current){
@@ -31,21 +29,21 @@ export default function Header(){
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                    })
+                })
             })
         }
     }
     
     /* Referente aos links */
     useEffect(() => {
-        axios.get(pointLinks)
+        axios.get(API_ENDPOINTS.SOCIAL_MIDIA)
         .then(response => setLinks(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
 
     /* Referente ao email no header */
     useEffect(() => {
-        axios.get(pointEmail)
+        axios.get(API_ENDPOINTS.SITE_SETUP)
         .then(response => {setEmail(response.data[0])})
         .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, [])

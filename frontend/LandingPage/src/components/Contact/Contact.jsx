@@ -3,21 +3,19 @@ import { useEffect, useState } from "react";
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import imgHand from "../../assets/img/handshake.png";
+import { API_ENDPOINTS } from "../../services/api";
 import Button from "../Buttons/Button";
 import style from "./Contact.module.css";
+
 
 export default function Contact(){
 
     const [ formData, setFormData ] = useState({ name: "", email: "", message: "" });
     const [ apiOnline, setApiOnline ] = useState(true);
 
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const pointContact = API_BASE + "/api/contact/";
-    const pingApi = API_BASE + "/api/ping";
-
     // testa se a api está online
     useEffect(() => {
-        axios.get(`${pingApi}`)
+        axios.get(API_ENDPOINTS.PING_API)
             .then(() => setApiOnline(true))
             .catch(() => setApiOnline(false));
     }, []);
@@ -30,7 +28,7 @@ export default function Contact(){
         e.preventDefault();
 
         try{
-            await axios.post(pointContact, formData)
+            await axios.post(API_ENDPOINTS.CONTACTS, formData)
             setFormData({ name: "", email: "", message: "" });
             toast.success("Obrigado por entrar em contato, assim que possível retornaremos", {
                 position: "top-center",

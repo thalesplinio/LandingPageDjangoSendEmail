@@ -2,17 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { API_ENDPOINTS } from "../../services/api";
 import ALinks from "../ALinks/ALinks";
 import styles from "./ServiceCards.module.css";
 
 export default function ServiceCards(){
     const [ project, setProject ] = useState([]);
 
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const pointProject = API_BASE + "/api/projects/";
-
     useEffect(() => {
-        axios.get(pointProject)
+        axios.get(API_ENDPOINTS.PROJECTS)
         .then(response => setProject(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])

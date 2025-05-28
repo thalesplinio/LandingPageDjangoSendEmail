@@ -2,25 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { API_ENDPOINTS } from "../../services/api";
 import styles from "./Footer.module.css";
+
 
 export default function Footer(){
 
     const [ footer, setFooter ] = useState(null);
     const [ links, setLinks ] = useState([]);
 
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const pointFooter = API_BASE + "/api/site_setup/";
-    const pointLinks = API_BASE + "/api/social_midia/";
-
     useEffect(() => {
-        axios.get(pointFooter)
+        axios.get(API_ENDPOINTS.SITE_SETUP)
         .then(response => setFooter(response.data[0]))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
     
     useEffect(() => {
-        axios.get(pointLinks)
+        axios.get(API_ENDPOINTS.SOCIAL_MIDIA)
         .then(response => setLinks(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
