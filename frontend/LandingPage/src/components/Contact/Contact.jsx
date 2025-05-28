@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
+import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import imgHand from "../../assets/img/handshake.png";
 import Button from "../Buttons/Button";
 import style from "./Contact.module.css";
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Contact(){
 
     const [ formData, setFormData ] = useState({ name: "", email: "", message: "" });
-    const endPointContact = "http://127.0.0.1:8000/api/contact/";
+    
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const PointContact = API_BASE + "/api/contact/";
 
     const handleChange = (e) =>{
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +21,7 @@ export default function Contact(){
         e.preventDefault();
 
         try{
-            await axios.post(endPointContact, formData)
+            await axios.post(PointContact, formData)
             setFormData({ name: "", email: "", message: "" });
             toast.success("Obrigado por entrar em contato, assim que possível retornaremos", {
                 position: "top-center",
