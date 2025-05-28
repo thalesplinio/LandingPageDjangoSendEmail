@@ -29,23 +29,23 @@ export default function Header(){
             })
         }
     }
-
     const [ links, setLinks ] = useState([]);
-    const endpointLinks = "http://127.0.0.1:8000/api/social_midia/";
-    
     const [ email, setEmail ] = useState(null);
-    const endpointEmail = "http://127.0.0.1:8000/api/site_setup/";
+
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const pointLinks = API_BASE + "/api/social_midia/";
+    const pointEmail = API_BASE + "/api/site_setup/";
     
     /* Referente aos links */
     useEffect(() => {
-        axios.get(endpointLinks)
+        axios.get(pointLinks)
         .then(response => setLinks(response.data))
         .catch(error =>{ console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
 
     /* Referente ao email no header */
     useEffect(() => {
-        axios.get(endpointEmail)
+        axios.get(pointEmail)
         .then(response => {setEmail(response.data[0])})
         .catch(error =>{console.log("Tivemos um erro ao carregar ----- ", error)});
     }, [])
