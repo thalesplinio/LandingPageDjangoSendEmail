@@ -9,6 +9,11 @@ import styles from "./Hero.module.css";
 
 export default function Hero(){
 
+    const [hero, setHero] = useState(null);
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const apiSiteSetup = "/api/site_setup/";
+    const endpoint = API_BASE + apiSiteSetup;
+
     const handleDownloadCv = () =>{
         toast.success("O Currículo está sendo Visualizado...", {
             position: "top-center",
@@ -19,14 +24,8 @@ export default function Hero(){
             draggable: true,
             progress: undefined,
             theme: "colored",
-            });
+        });
     }
-
-    const [hero, setHero] = useState(null);
-    
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const apiSiteSetup = "/api/site_setup/";
-    const endpoint = API_BASE + apiSiteSetup;
 
     useEffect(() =>{
         axios.get(endpoint)

@@ -9,9 +9,15 @@ import styles from "./Header.module.css";
 
 export default function Header(){
 
-    const [showNav, setShowNav] = useState(false);
+    const [ showNav, setShowNav ] = useState(false);
+    const [ links, setLinks ] = useState([]);
+    const [ email, setEmail ] = useState(null);
     const emailRef = useRef(null);
 
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
+    const pointLinks = API_BASE + "/api/social_midia/";
+    const pointEmail = API_BASE + "/api/site_setup/";
+    
     const handleCopyEmail = () =>{
         if (emailRef.current){
             navigator.clipboard.writeText(emailRef.current.textContent)
@@ -29,12 +35,6 @@ export default function Header(){
             })
         }
     }
-    const [ links, setLinks ] = useState([]);
-    const [ email, setEmail ] = useState(null);
-
-    const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const pointLinks = API_BASE + "/api/social_midia/";
-    const pointEmail = API_BASE + "/api/site_setup/";
     
     /* Referente aos links */
     useEffect(() => {
