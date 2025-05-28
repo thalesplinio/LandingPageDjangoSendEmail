@@ -11,6 +11,11 @@ from rest_framework import status
 
 
 @api_view(["GET"])
+def health_check(request):
+    return Response(status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
 def get_site_setup(request):
     site_setup = SiteSetup.objects.all()
     serialier = SiteSetupSerialize(site_setup, many=True)

@@ -10,6 +10,12 @@
     white-space: nowrap;
     animation: scroll 20s linear infinite;
 }
+.sliderSkeleton{
+    margin: 0 auto;
+}
+.tecContainerSkeleton{
+    padding: 20px 200px 20px 200px;
+}
 .tecContainer span{
     display: inline-block;
     font-size: 24px;

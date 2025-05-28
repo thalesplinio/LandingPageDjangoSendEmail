@@ -19,7 +19,7 @@ export default function Hero(){
             draggable: true,
             progress: undefined,
             theme: "colored",
-            }); 
+            });
     }
 
     const [hero, setHero] = useState(null);

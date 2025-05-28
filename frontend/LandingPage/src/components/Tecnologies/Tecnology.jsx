@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Skeleton from 'react-loading-skeleton';
 import styles from "./Tecnology.module.css";
 
 
@@ -15,7 +16,13 @@ export default function Tecnology(){
         .catch(error => { console.log("Tivemos um erro ao carregar ----- ", error)})
     }, [])
     
-    if (tech.length === 0) return <p>Carregando...</p>
+    if (tech.length === 0) return (
+        <section className={styles.tecContainerSkeleton}>
+            <div className={styles.sliderSkeleton}>
+                <span>{<Skeleton/>}</span>
+            </div>
+        </section>
+    );
 
     return(
         <section className={styles.tecContainer}>

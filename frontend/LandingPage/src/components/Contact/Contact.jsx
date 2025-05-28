@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import imgHand from "../../assets/img/handshake.png";
@@ -9,9 +9,18 @@ import style from "./Contact.module.css";
 export default function Contact(){
 
     const [ formData, setFormData ] = useState({ name: "", email: "", message: "" });
-    
+    const [ apiOnline, setApiOnline ] = useState(true);
+
     const API_BASE = import.meta.env.VITE_REACT_APP_API_URL;
-    const PointContact = API_BASE + "/api/contact/";
+    const pointContact = API_BASE + "/api/contact/";
+    const pingApi = API_BASE + "/api/ping";
+
+    // testa se a api está online
+    useEffect(() => {
+        axios.get(`${pingApi}`)
+            .then(() => setApiOnline(true))
+            .catch(() => setApiOnline(false));
+    }, []);
 
     const handleChange = (e) =>{
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +30,7 @@ export default function Contact(){
         e.preventDefault();
 
         try{
-            await axios.post(PointContact, formData)
+            await axios.post(pointContact, formData)
             setFormData({ name: "", email: "", message: "" });
             toast.success("Obrigado por entrar em contato, assim que possível retornaremos", {
                 position: "top-center",
@@ -56,39 +65,43 @@ export default function Contact(){
             </div>
             <h3>Contato</h3>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Nome completo</label>
-                <input 
-                    type="text" 
-                    name="name" 
-                    id="name" 
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="informe seu nome completo" 
-                    required
-                />
+            {!apiOnline ? (
+                <p style={{color: "red", textAlign: "center"}}>⚠️ O sistema de contato está temporariamente indisponível.</p>
+            ) : (
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Nome completo</label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name" 
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="informe seu nome completo" 
+                        required
+                        />
 
-                <label htmlFor="email">E-mail</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="informe seu melhor e-mail" 
-                    required
-                />
+                    <label htmlFor="email">E-mail</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="informe seu melhor e-mail" 
+                        required
+                        />
 
-                <label htmlFor="message">Mensagem</label>
-                <textarea 
-                    name="message" 
-                    id="message" 
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="informe sua mensagem..."></textarea>
-                
-                <Button content="Enviar" type="submit"/>
-            </form>
+                    <label htmlFor="message">Mensagem</label>
+                    <textarea 
+                        name="message" 
+                        id="message" 
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="informe sua mensagem..."></textarea>
+                    
+                    <Button content="Enviar" type="submit"/>
+                </form>
+            )}
         </div>
     )
 }

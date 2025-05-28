@@ -3,10 +3,11 @@ from .views import (
     SocialMidiaListView, TechnologyListView,
     ProjectListView, ContactCreateView
 )
-from .views import (get_site_setup)
+from .views import (health_check, get_site_setup)
 
 
 urlpatterns = [
+    path('ping/', health_check, name="ping"),
     path('site_setup/', get_site_setup, name="site_setup"),
     # path('site_setup/', SiteSetupListView.as_view(), name="site_setup"),
 
