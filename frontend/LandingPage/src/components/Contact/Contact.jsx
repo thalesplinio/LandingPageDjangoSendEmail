@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from "react-toastify";
 import imgHand from "../../assets/img/handshake.png";
@@ -64,7 +65,7 @@ export default function Contact(){
             <h3>Contato</h3>
 
             {!apiOnline ? (
-                <p style={{color: "red", textAlign: "center"}}>⚠️ O sistema de contato está temporariamente indisponível.</p>
+                <div className={style.myBox}> ⚠️ O sistema de contato está temporariamente indisponível. {<Skeleton/>}</div>
             ) : (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Nome completo</label>
