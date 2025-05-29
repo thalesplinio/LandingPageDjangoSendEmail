@@ -8,6 +8,8 @@ from .serializers import (
     SiteSetupSerialize, SocialMidiaSerialize, TechnologiesSerializer,
     ProjectsSerializer, ContactSerializer
 )
+from services.send_email.send_email import EnviarEmailSMTP
+from threading import Thread
 
 
 @api_view(["GET"])
@@ -46,7 +48,17 @@ def get_projects(request):
 @api_view(["POST"])
 def create_contact(request):
     serializer = ContactSerializer(data=request.data)
+    send_email = EnviarEmailSMTP()
+
     if serializer.is_valid():
         contact = serializer.save()
+
+        def envia_email_boas_vidas():
+            name = contact.name
+            email = contact.email
+            send_email.enviar_email(name, email)
+        thread_envia_email = Thread(target=envia_email_boas_vidas())
+        thread_envia_email.start()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
